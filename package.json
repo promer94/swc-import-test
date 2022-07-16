@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "webpack-cli serve"
+    "start": "webpack-cli serve",
+    "build": "webpack-cli build"
   },
   "dependencies": {
     "@vue/composition-api": "1.7.0",
