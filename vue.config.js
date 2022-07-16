@@ -1,6 +1,7 @@
 const { defineConfig } = require("@vue/cli-service")
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin")
 module.exports = defineConfig({
+  productionSourceMap: false,
   configureWebpack: {
     plugins: [
       new ModuleFederationPlugin({
