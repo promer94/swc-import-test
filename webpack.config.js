@@ -40,12 +40,10 @@ module.exports = (env = {}) => ({
         HelloWorld: "./src/components/HelloWorld.vue",
       },
       shared: {
-        vue: { singleton: true },
-        "vue-demi": {
-          singleton: true,
-        },
-        "@vue/composition-api": {
-          singleton: true,
+        vue: { },
+        "vue-demi": {},
+        "@vue/composition-api/dist/vue-composition-api.mjs": {
+          
         },
       },
     }),
