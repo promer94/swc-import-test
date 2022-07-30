@@ -2,6 +2,19 @@ const path = require("path")
 const { VueLoaderPlugin } = require("vue-loader")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { ModuleFederationPlugin } = require("webpack").container
+
+const shared = {
+  vue: {
+    //import: "vue/dist/vue.runtime.esm.js",
+    singleton: true,
+  },
+  "vue-demi": {},
+  "@vue/composition-api": {
+    // import: "@vue/composition-api/dist/vue-composition-api.mjs",
+    singleton: true,
+  },
+}
+
 module.exports = (env = {}) => ({
   mode: "development",
   cache: false,
@@ -34,18 +47,12 @@ module.exports = (env = {}) => ({
   plugins: [
     new ModuleFederationPlugin({
       name: "vue-demi",
-      library: { type: "var", name: "a" },
+      library: { type: "var", name: 'o2_mkt' },
       filename: "remoteEntry.js",
       exposes: {
         HelloWorld: "./src/components/HelloWorld.vue",
       },
-      shared: {
-        vue: { },
-        "vue-demi": {},
-        "@vue/composition-api/dist/vue-composition-api.mjs": {
-          
-        },
-      },
+      shared
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./public/index.html"),
@@ -65,5 +72,5 @@ module.exports = (env = {}) => ({
       "Access-Control-Allow-Headers":
         "X-Requested-With, content-type, Authorization",
     },
-  },
+  }
 })
