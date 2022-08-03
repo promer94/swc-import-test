@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <HelloWorld />
+    <Button type="primary">SWC + element-ui</Button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { Button } from "element-ui"
+// import { CarouselItem } from 'element-ui'
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
+    Button,
+  },
 }
 </script>

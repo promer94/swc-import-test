@@ -13,6 +13,7 @@ const shared = {
     import: "@vue/composition-api/dist/vue-composition-api.mjs",
     singleton: true,
   },
+  "element-ui": {},
 }
 
 const swcLoader = {
@@ -73,7 +74,7 @@ module.exports = (env = {}) => ({
       library: { type: "var", name: "o2_mkt" },
       filename: "remoteEntry.js",
       exposes: {
-        HelloWorld: "./src/components/HelloWorld.vue",
+        App: "./src/App.vue",
       },
       shared,
     }),
