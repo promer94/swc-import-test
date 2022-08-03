@@ -5,25 +5,47 @@ const { ModuleFederationPlugin } = require("webpack").container
 
 const shared = {
   vue: {
-    //import: "vue/dist/vue.runtime.esm.js",
+    import: "vue/dist/vue.runtime.esm.js",
     singleton: true,
   },
   "vue-demi": {},
   "@vue/composition-api": {
-    // import: "@vue/composition-api/dist/vue-composition-api.mjs",
+    import: "@vue/composition-api/dist/vue-composition-api.mjs",
     singleton: true,
+  },
+}
+
+const swcLoader = {
+  test: /\.m?js$/,
+  exclude: /(node_modules)/,
+  use: {
+    loader: "swc-loader",
+    /*options: {
+      jsc: {
+        experimental: {
+          plugins: [
+            [
+              require.resolve("@swc/plugin-transform-imports"),
+              {
+                "element-ui": {
+                  transform: "element-ui/lib/{{member}}",
+                },
+              },
+            ],
+          ],
+        },
+      },
+    },*/
   },
 }
 
 module.exports = (env = {}) => ({
   mode: "development",
-  cache: false,
+  cache: true,
   target: "web",
   devtool: false,
   entry: path.resolve(__dirname, "./src/main.js"),
   output: {
-    // library: {type: 'var'},
-    libraryExport: "main",
     publicPath: "/",
   },
   resolve: {
@@ -42,17 +64,18 @@ module.exports = (env = {}) => ({
         test: /\.vue$/,
         use: "vue-loader",
       },
+      swcLoader,
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
       name: "vue-demi",
-      library: { type: "var", name: 'o2_mkt' },
+      library: { type: "var", name: "o2_mkt" },
       filename: "remoteEntry.js",
       exposes: {
         HelloWorld: "./src/components/HelloWorld.vue",
       },
-      shared
+      shared,
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./public/index.html"),
@@ -72,5 +95,5 @@ module.exports = (env = {}) => ({
       "Access-Control-Allow-Headers":
         "X-Requested-With, content-type, Authorization",
     },
-  }
+  },
 })
