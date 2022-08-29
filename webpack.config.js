@@ -14,6 +14,10 @@ const shared = {
     singleton: true,
   },
   "element-ui": {},
+  "@formily/core": {},
+  "@formily/element": {},
+  "@formily/reactive-vue": {},
+  "@formily/vue": {},
 }
 
 const swcLoader = {
@@ -38,7 +42,10 @@ const swcLoader = {
               require.resolve("@swc/plugin-transform-imports"),
               {
                 "element-ui": {
-                  transform: "element-ui/lib/{{member}}",
+                  transform: "element-ui/lib/{{ kebabCase member }}",
+                },
+                "@formily/element": {
+                  transform: "@formily/element/esm/{{ kebabCase member }}",
                 },
               },
             ],
@@ -85,12 +92,9 @@ module.exports = (env = {}) => ({
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "vue-demi",
+      name: "the-runtime",
       library: { type: "var", name: "o2_mkt" },
       filename: "remoteEntry.js",
-      exposes: {
-        App: "./src/App.vue",
-      },
       shared,
     }),
     new HtmlWebpackPlugin({

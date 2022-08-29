@@ -9,6 +9,10 @@
     "build:production": "webpack-cli build --mode production"
   },
   "dependencies": {
+    "@formily/core": "^2.2.1",
+    "@formily/element": "^2.2.1",
+    "@formily/reactive-vue": "^2.2.1",
+    "@formily/vue": "^2.2.1",
     "@vue/composition-api": "1.7.0",
     "core-js": "3.25.0",
     "css-loader": "^6.7.1",
