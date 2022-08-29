@@ -6,12 +6,11 @@
 
 <script>
 import { Button } from "element-ui"
-// import { CarouselItem } from 'element-ui'
 
 export default {
   name: "App",
   components: {
-    Button,
+    Button
   },
 }
 </script>

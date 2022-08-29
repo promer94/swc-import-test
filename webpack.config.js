@@ -21,8 +21,17 @@ const swcLoader = {
   exclude: /(node_modules)/,
   use: {
     loader: "swc-loader",
-    /*options: {
+    options: {
       jsc: {
+        parser: {
+          syntax: "typescript",
+          decorators: true,
+        },
+        transform: {
+          legacyDecorator: true,
+        },
+        loose: true,
+        externalHelpers: true,
         experimental: {
           plugins: [
             [
@@ -36,7 +45,13 @@ const swcLoader = {
           ],
         },
       },
-    },*/
+      env: {
+        mode: "usage",
+        coreJs: "3.25",
+        loose: true,
+      },
+      minify: false,
+    },
   },
 }
 
@@ -50,7 +65,7 @@ module.exports = (env = {}) => ({
     publicPath: "/",
   },
   resolve: {
-    extensions: [".vue", ".jsx", ".js", ".json"],
+    extensions: [".vue", ".jsx", ".js", ".json", ".mjs"],
     alias: {
       // this isn't technically needed, since the default `vue` entry for bundlers
       // is a simple `export * from '@vue/runtime-dom`. However having this
