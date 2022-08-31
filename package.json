@@ -9,10 +9,10 @@
     "build:production": "webpack-cli build --mode production"
   },
   "dependencies": {
-    "@formily/core": "^2.2.1",
-    "@formily/element": "^2.2.1",
-    "@formily/reactive-vue": "^2.2.1",
-    "@formily/vue": "^2.2.1",
+    "@formily/core": "^2.2.2",
+    "@formily/element": "^2.2.2",
+    "@formily/reactive-vue": "^2.2.2",
+    "@formily/vue": "^2.2.2",
     "@vue/composition-api": "1.7.0",
     "core-js": "3.25.0", 
     "element-ui": "^2.15.9",
@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "css-loader": "^6.7.1",
-    "@swc/core": "1.2.244", 
+    "@swc/core": "1.2.245", 
     "@swc/plugin-transform-imports": "^1.2.10",
     "html-webpack-plugin": "^5.5.0",
     "swc-loader": "^0.2.3",
